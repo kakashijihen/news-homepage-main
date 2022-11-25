@@ -1,0 +1,297 @@
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("../assets/fonts/Inter-VariableFont_slnt,wght.ttf");
+  font-weight: 100 900;
+}
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  --transform-menu: scale(1);
+  --transform-close: scale(0);
+}
+.navbar::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.66);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+@media screen and (min-width: 768px) {
+  .navbar::before {
+    content: unset;
+  }
+}
+.navbar:has(.navbar__container:target) {
+  --transform-menu: scale(0);
+  --transform-close: scale(1);
+}
+.navbar:has(.navbar__container:target)::before {
+  pointer-events: unset;
+  opacity: 1;
+}
+@media screen and (min-width: 768px) {
+  .navbar:has(.navbar__container:target)::before {
+    pointer-events: unset;
+    opacity: 1;
+  }
+}
+.navbar__menu, .navbar__close {
+  grid-column: span 1/-1;
+  grid-row: 1/2;
+  transition: 0.2s transform;
+}
+@media screen and (min-width: 768px) {
+  .navbar__menu, .navbar__close {
+    display: none;
+  }
+}
+.navbar__menu {
+  transform: var(--transform-menu);
+}
+.navbar__close {
+  transform: var(--transform-close);
+  z-index: 1;
+  position: fixed;
+  right: 5%;
+}
+.navbar__container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  max-width: 20rem;
+  background-color: hsl(36deg, 100%, 99%);
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: max-content;
+  padding: 100px 0 80px 40px;
+  overflow-y: auto;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+@media screen and (min-width: 768px) {
+  .navbar__container {
+    position: unset;
+    width: unset;
+    max-width: unset;
+    gap: 1.5em;
+    grid-auto-flow: column;
+    padding: 0;
+    overflow-y: unset;
+    pointer-events: unset;
+    opacity: 1;
+    transition: none;
+  }
+}
+.navbar__container__navlink {
+  list-style: none;
+}
+.navbar__container__navlink a {
+  text-decoration: none;
+  color: hsl(240deg, 100%, 5%);
+  font-weight: 500;
+}
+.navbar__container__navlink a:hover {
+  color: hsl(35deg, 77%, 62%);
+}
+.navbar__container:target {
+  opacity: 1;
+  pointer-events: unset;
+  transition-duration: 0.6s;
+}
+
+.container {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+@media screen and (min-width: 768px) {
+  .container__hero {
+    grid-column: 1/2;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container__hero {
+    grid-column: 1/3;
+  }
+}
+.container__hero__img {
+  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: 20rem;
+  background-size: cover;
+  background-image: url("../assets/images/image-web-3-mobile.jpg");
+}
+@media screen and (min-width: 768px) {
+  .container__hero__img {
+    background-size: cover;
+    background-image: url("../assets/images/image-web-3-desktop.jpg");
+  }
+}
+.container__hero__text {
+  padding: 1.5rem 0;
+}
+@media screen and (min-width: 960px) {
+  .container__hero__text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container__hero__text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+.container__hero__text__titulo {
+  font-size: 2rem;
+  font-weight: 800;
+}
+@media screen and (min-width: 768px) {
+  .container__hero__text__titulo {
+    font-size: 2.5rem;
+  }
+}
+.container__hero__text__descripcion {
+  line-height: 1.5;
+  margin: 1.5rem 0;
+  font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .container__hero__text__descripcion {
+    margin: 1rem 0;
+  }
+}
+.container__hero__text__cta {
+  background-color: hsl(5deg, 85%, 63%);
+  outline: none;
+  color: hsl(36deg, 100%, 99%);
+  border: 0px;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .container__hero__text__cta {
+    background-color: hsl(5deg, 85%, 63%);
+    outline: none;
+    color: hsl(36deg, 100%, 99%);
+    border: 0px;
+    padding: 1.25rem 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 5px;
+    cursor: pointer;
+  }
+}
+.container__sidebar {
+  background-color: hsl(240deg, 100%, 5%);
+  color: hsl(36deg, 100%, 99%);
+  padding: 2.5rem 1rem;
+}
+.container__sidebar__titulo {
+  font-size: 3rem;
+  color: hsl(35deg, 77%, 62%);
+  margin-bottom: 1rem;
+}
+.container__sidebar__section {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid hsl(233deg, 8%, 79%);
+}
+.container__sidebar__section:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.container__sidebar__section__titulo {
+  margin-bottom: 1rem;
+}
+.container__sidebar__section__resumen {
+  line-height: 1.5;
+  color: hsl(233deg, 8%, 79%);
+}
+@media screen and (min-width: 1024px) {
+  .container__sidebar {
+    grid-column: 3/3;
+  }
+}
+.container__destacados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+@media screen and (min-width: 640px) {
+  .container__destacados {
+    grid-column: 1/3;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container__destacados {
+    grid-column: 1/4;
+  }
+}
+.container__destacados__section {
+  display: flex;
+  gap: 2rem;
+  min-width: 320px;
+  flex: 375px;
+}
+.container__destacados__section__img {
+  width: 30%;
+  max-width: 150px;
+  object-fit: cover;
+  align-self: start;
+}
+.container__destacados__section__text {
+  width: 70%;
+  flex: 1;
+}
+.container__destacados__section span {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: hsl(233deg, 8%, 79%);
+}
+.container__destacados__section__titulo {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.attribution {
+  font-size: 1rem;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228deg, 45%, 44%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1280px;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=style.css.map */

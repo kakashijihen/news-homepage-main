@@ -1,0 +1,17 @@
+@mixin mv($breakpoint: 480px){
+    @media screen and (min-width:$breakpoint) {
+        @content
+    }
+}
+
+@mixin btn($bg-color,$outline,$text-color,$border,$padding,$text-transform,$weight,$spacing ) {
+    background-color: $bg-color;
+    outline: $outline;
+    color: $text-color;
+    border: $border;
+    padding: $padding;
+    text-transform: $text-transform;
+    font-weight: $weight;
+    letter-spacing: $spacing;
+    cursor: pointer;
+}

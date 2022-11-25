@@ -1,0 +1,22 @@
+//colores primarios
+
+$Softorange: hsl(35, 77%, 62%);
+$Softred: hsl(5, 85%, 63%);
+
+//Colores Neutrales
+
+$Off-white: hsl(36, 100%, 99%);
+$Grayishblue: hsl(233, 8%, 79%);
+$Darkgrayishblue: hsl(236, 13%, 42%);
+$Verydarkblue: hsl(240, 100%, 5%);
+
+//Tipografia
+
+$paragraph:15px;
+
+@font-face {
+    font-family: 'Inter', sans-serif;
+    src: url('../assets/fonts/Inter-VariableFont_slnt,wght.ttf');
+    font-weight: 100 900;
+}
+

@@ -1,0 +1,22 @@
+
+@use 'Navbar';
+@use 'Container';
+@use 'Footer';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1280px;
+    overflow: hidden;
+   
+}

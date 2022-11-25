@@ -1,0 +1,98 @@
+@use 'Global';
+
+.navbar{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+
+    --transform-menu: scale(1);
+    --transform-close: scale(0);
+    
+    &::before{
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.66);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s; 
+        @include Global.mv(768px){content: unset;} 
+    }
+    &:has(&__container:target){
+        --transform-menu: scale(0);
+        --transform-close: scale(1);
+        &::before{
+            pointer-events: unset;
+            opacity: 1; 
+            @include Global.mv(768px){
+                pointer-events: unset;
+                opacity: 1;
+            } 
+        }
+    }
+
+    &__menu, &__close{
+        grid-column: span 1 / -1;
+        grid-row: 1/2;
+        transition: .2s transform;      
+        @include Global.mv(768px){display: none;}  
+    }
+
+    &__menu{
+        transform: var(--transform-menu);
+    }
+    &__close{
+        transform: var(--transform-close);
+        z-index: 1;
+        position: fixed;
+        right: 5%;
+    }
+    &__container{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 60%;
+        max-width: 20rem;
+        background-color: Global.$Off-white;
+        display: grid;
+        gap: 1rem;
+        grid-auto-rows: max-content;
+        padding: 100px 0 80px 40px;
+        overflow-y: auto;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .3s;
+        @include Global.mv(768px){
+            position: unset;        
+            width: unset;
+            max-width: unset;
+            gap: 1.5em;
+            grid-auto-flow: column;            
+            padding:0;            
+            overflow-y: unset;
+            pointer-events: unset;
+            opacity: 1;
+            transition: none;
+        }
+        &__navlink{
+            list-style: none;            
+            a{
+                text-decoration: none;
+                color: Global.$Verydarkblue;
+                font-weight: 500;
+                &:hover{
+                    color: Global.$Softorange;
+                }
+            }
+        }
+        &:target{
+            opacity: 1;
+            pointer-events: unset;
+            transition-duration: .6s; 
+        }
+    }
+
+}
